@@ -23,7 +23,7 @@ feature 'add new post' do
 
         within('#post-form') do
           fill_in('Title', with: 'Some title')
-          fill_in('Description', with: 'Some description')
+          fill_in('Content', with: 'Some content')
           click_on('Create')
         end
 
@@ -41,7 +41,7 @@ feature 'add new post' do
         end
 
         expect(page).to have_content('Title can\'t be blank')
-        expect(page).to have_content('Description can\'t be blank')
+        expect(page).to have_content('Content can\'t be blank')
       end
     end
   end

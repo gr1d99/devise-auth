@@ -27,11 +27,11 @@ feature 'post form' do
 
       within('#post-form') do
         fill_in('Title', with: title)
-        fill_in('Description', with: content)
+        fill_in('Content', with: content)
       end
 
       expect(page).to have_field('Title', with: title)
-      expect(page).to have_field('Description', with: content)
+      expect(page).to have_field('Content', with: content)
     end
   end
 end

@@ -9,7 +9,7 @@ RSpec.describe Post, type: :model do
 
   describe 'validation' do
     it { should validate_presence_of(:title) }
-    it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:content) }
     it { should validate_presence_of(:user) }
     it { should validate_uniqueness_of(:title).scoped_to(:user_id).with_message('You can\'t have more than one post with the same title') }
     it 'should allow different users to have posts with same titles' do

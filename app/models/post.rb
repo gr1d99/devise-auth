@@ -6,6 +6,6 @@ class Post < ApplicationRecord
     scope: :user_id,
     message: 'You can\'t have more than one post with the same title'
   }
-  validates :description, presence: true
+  validates :content, presence: true
   validates :user, presence: true
 end
