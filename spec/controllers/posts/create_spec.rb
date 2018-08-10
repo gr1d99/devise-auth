@@ -30,7 +30,7 @@ RSpec.describe PostsController, type: :controller do
 
         it 'adds new post to database' do
           expect(Post.last.title).to eq(post_attributes[:post][:title])
-          expect(Post.last.description).to eq(post_attributes[:post][:description])
+          expect(Post.last.content).to eq(post_attributes[:post][:content])
         end
       end
 
