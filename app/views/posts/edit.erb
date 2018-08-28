@@ -1,0 +1,13 @@
+<%= form_with(model: @post, local: true) do |form| %>
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </p>
+
+  <button type="submit">Update Post</button>
+<% end %>
