@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[index new create show edit update]
+  before_action :authenticate_user!, only: %i[index new create show edit update destroy]
 
   def index
     @posts = current_user.posts.all
@@ -29,6 +29,11 @@ class PostsController < ApplicationController
   def update
     post.update_attributes(post_params)
     redirect_to post_path(post), notice: :'Post updated successfully'
+  end
+
+  def destroy
+    post.destroy
+    redirect_to posts_path, notice: :'Post deleted successfully'
   end
 
   private
