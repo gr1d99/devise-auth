@@ -33,7 +33,8 @@ feature 'edit post' do
     context 'is owner of post' do
       before do
         login_form.visit_page.login_as(user)
-        visit(edit_post_path(post))
+        visit(post_path(post))
+        click_on("Edit Post")
       end
 
       scenario 'sees form with post data' do
