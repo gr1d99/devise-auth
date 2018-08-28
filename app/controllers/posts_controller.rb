@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[index new create]
+  before_action :authenticate_user!, only: %i[index new create show]
 
   def index
     @posts = current_user.posts.all
+  end
+
+  def show
+    @post = post
   end
 
   def new
@@ -25,5 +29,9 @@ class PostsController < ApplicationController
       :title,
       :content
     )
+  end
+
+  def post
+    current_user.posts.find(params[:id])
   end
 end

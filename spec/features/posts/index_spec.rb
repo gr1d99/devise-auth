@@ -20,7 +20,7 @@ feature 'list all posts' do
     end
 
     after(:all) do
-      Post.delete_all
+      User.destroy_all
     end
 
     scenario 's(he) can see posts she created' do
