@@ -28,7 +28,7 @@ feature 'add new post' do
         end
 
         expect(page).to have_content('Post created successfully')
-        expect(page.current_path).to eq(new_post_path)
+        expect(page.current_path).not_to eq(new_post_path)
       end
     end
 
