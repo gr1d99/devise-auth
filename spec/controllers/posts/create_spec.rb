@@ -24,8 +24,8 @@ RSpec.describe PostsController, type: :controller do
           post :create, params: post_attributes
         end
 
-        it 'redirects to posts#new' do
-          expect(response).to redirect_to(new_post_url)
+        it 'redirects to posts#show' do
+          expect(response).to redirect_to(post_path(Post.last.id))
         end
 
         it 'adds new post to database' do
