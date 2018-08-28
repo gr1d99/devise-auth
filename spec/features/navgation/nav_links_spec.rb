@@ -40,5 +40,9 @@ feature 'navbar' do
     scenario 'sees posts link' do
       expect(page).to have_link('My Posts', href: posts_path)
     end
+
+    scenario 'sees create post link' do
+      expect(page).to have_link('Create Post', href: new_post_path)
+    end
   end
 end
