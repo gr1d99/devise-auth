@@ -1,13 +1,16 @@
-<%= form_with(model: @post, local: true) do |form| %>
-  <p>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </p>
+<div class="col-md-6 offset-md-3">
+  <h2 class="text-center">Edit Post</h2>
+  <%= form_with(model: @post, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
 
-  <p>
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </p>
+    <div class="form-group">
+      <%= form.label :content %>
+      <%= form.text_area :content, class: "form-control" %>
+    </div>
 
-  <button type="submit">Update Post</button>
-<% end %>
+    <%= form.submit "Update Post", class: "btn btn-primary" %>
+  <% end %>
+</div>

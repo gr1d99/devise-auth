@@ -14,9 +14,20 @@
 
   <body>
     <%= render("includes/navbar") %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container body-top">
+      <% if notice %>
+        <div class="alert alert-info" role="alert">
+          <%= notice %>
+        </div>
+      <% end %>
 
-    <%= yield %>
+      <% if alert %>
+        <div class="alert alert-warning text-center" role="alert">
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
