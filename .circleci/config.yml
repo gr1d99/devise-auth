@@ -8,6 +8,7 @@ jobs:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
+          CC_TEST_REPORTER_ID: $CC_TEST_REPORTER_ID
           PGHOST: 127.0.0.1
           PGUSER: rails_blog
           RAILS_ENV: test
@@ -20,6 +21,12 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: "Setup codeclimate test reporter"
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
 
       - run:
           name: "Which bundler?"
@@ -50,4 +57,7 @@ jobs:
 
       - run:
           name: Run rspec
-          command: bundle exec rspec -fd
+          command: |
+            bundle exec rspec -fd
+            ./cc-test-reporter before-build
+            ./cc-test-reporter after-build --exit-code $?

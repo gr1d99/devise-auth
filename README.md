@@ -1,2 +1,2 @@
 # README
-[![CircleCI](https://circleci.com/gh/gr1d99/rails-blog/tree/develop.svg?style=svg)](https://circleci.com/gh/gr1d99/rails-blog/tree/develop)
+[![CircleCI](https://circleci.com/gh/gr1d99/rails-blog/tree/develop.svg?style=svg)](https://circleci.com/gh/gr1d99/rails-blog/tree/develop) [![Maintainability](https://api.codeclimate.com/v1/badges/fb0238df1a389c98d6da/maintainability)](https://codeclimate.com/github/gr1d99/rails-blog/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/fb0238df1a389c98d6da/test_coverage)](https://codeclimate.com/github/gr1d99/rails-blog/test_coverage)
