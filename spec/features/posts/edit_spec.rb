@@ -8,7 +8,7 @@ feature 'edit post' do
 
   context 'guest user' do
     before do
-      visit(post_path(post))
+      visit(edit_post_path(post))
     end
 
     scenario 'it redirects to login page' do
@@ -22,7 +22,7 @@ feature 'edit post' do
     context 'is not owner of post' do
       before do
         login_form.visit_page.login_as(user_2)
-        visit(post_path(post))
+        visit(edit_post_path(post))
       end
 
       scenario 'sees not found content' do

@@ -5,27 +5,30 @@ feature 'show created post' do
   let(:user) { create(:user) }
   let(:post) { create(:post, user: user) }
 
-  context 'guest user' do
-    before do
-      visit "/posts/#{post.id}"
-    end
-
-    scenario 'cannot view existing posts' do
-      expect(page).to have_content("You need to sign in or sign up before continuing")
+  context 'all users' do
+    scenario 'can view post detail' do
+      visit("/posts/#{post.id}")
+      expect(page).to have_content(post.title)
+      expect(page).to have_content(post.content)
     end
   end
 
-  context 'signed in user' do
-    subject(:login_form) { LoginForm.new }
-
-    before do
-      login_form.visit_page.login_as(user)
-      visit("/posts/#{post.id}")
+  context 'when user is not logged in' do
+    scenario '(s)he does not see edit button' do
+      visit(post_path(post))
+      expect(page).not_to have_link('Edit Post')
     end
 
-    scenario 'can see created post (s)he created' do
-      expect(page).to have_content(post.title)
-      expect(page).to have_content(post.content)
+    scenario '(s)he does not see delete button' do
+      visit(post_path(post))
+      expect(page).not_to have_link('Delete Post')
+    end
+  end
+
+  context 'when post does not exist' do
+    scenario 'it shows page not found' do
+      visit('/posts/cd12e')
+      expect(page).to have_content(/Page not found/)
     end
   end
 end
