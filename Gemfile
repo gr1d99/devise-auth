@@ -61,8 +61,10 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers', '~> 3.1'
   gem 'capybara'
+  gem 'chromedriver-helper' # <- New!
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 

@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[index new create show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
-    @posts = current_user.posts.all
+    @posts = Post.all
   end
 
   def show
@@ -23,16 +23,16 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = post
+    @post = current_user_post
   end
 
   def update
-    post.update_attributes(post_params)
+    current_user_post.update_attributes(post_params)
     redirect_to post_path(post), notice: :'Post updated successfully'
   end
 
   def destroy
-    post.destroy
+    current_user_post.destroy
     redirect_to posts_path, notice: :'Post deleted successfully'
   end
 
@@ -46,6 +46,10 @@ class PostsController < ApplicationController
   end
 
   def post
+    Post.find(params[:id])
+  end
+
+  def current_user_post
     current_user.posts.find(params[:id])
   end
 end

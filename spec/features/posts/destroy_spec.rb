@@ -7,10 +7,10 @@ feature 'delete post' do
   let(:user_2) { create(:user) }
   subject(:login_form) { LoginForm.new }
 
-  scenario 'owner deletes post' do
-    login_form.visit_page.login_as(user)
-    visit(post_path(post))
+  before { login_form.visit_page.login_as(user) }
 
+  scenario 'owner deletes post' do
+    visit(post_path(post))
     click_on('Delete Post')
     expect(page).to have_content('Post deleted successfully')
     expect(page.current_path).to eq(posts_path)

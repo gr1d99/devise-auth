@@ -11,5 +11,21 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe PostsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user_1) { create(:user) }
+  let(:user_2) { create(:user) }
+  let(:post) { create(:post, user: user_1) }
+
+  context 'when user post owner' do
+    before { sign_in(user_1) }
+
+    it 'returns true' do
+      expect(helper.owner?(post)).to be_truthy
+    end
+  end
+
+  context 'when user is not post owner' do
+    it 'returns false' do
+      expect(helper.owner?(post)).not_to be_truthy
+    end
+  end
 end

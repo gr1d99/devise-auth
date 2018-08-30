@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../../support/shared_examples'
 
 RSpec.describe PostsController, type: :controller do
   let(:user) { create(:user) }
@@ -37,6 +38,11 @@ RSpec.describe PostsController, type: :controller do
       it { is_expected.to render_template(:edit) }
       it 'assigns post object' do
         expect(assigns(:post)).to eq(post)
+      end
+
+      describe 'when post does not exist' do
+        before { get :edit, params: { id: '234defe' } }
+        include_examples 'not found'
       end
     end
   end
