@@ -1,25 +1,31 @@
-<h1>New Post</h1>
+<div class="col-md-6 offset-md-3">
+  <h2 class="text-center">New Post</h2>
 
-<%= form_for @post, url: { action: 'create' }, html: { id: 'post-form' } do |f| %>
-  <% if @post.errors.any? %>
-    <div id='error_explanation'>
-      <h4>
-        <%= pluralize(@post.errors.count, 'error') %>
-         prohibited this form from being saved
-      </h4>
-      <ul>
-        <% @post.errors.full_messages.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
+  <%= form_for @post, url: {action: 'create'}, html: {id: 'post-create-form', class: "border p-3 rounded"} do |f| %>
+    <% if @post.errors.any? %>
+      <div id='error_explanation'>
+        <h2>
+          <%= pluralize(@post.errors.count, 'error') %>
+          prohibited this form from being saved
+        </h2>
+        <ul>
+          <% @post.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
+
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+
+    <%= f.submit 'Create', class: "btn btn-primary" %>
   <% end %>
-
-  <label for='post_title'>Title</label>
-  <%= f.text_field(:title) %>
-
-  <label for='post_content'>Content</label>
-  <%= f.text_area(:content) %>
-
-  <%= f.submit('Create') %>
-<% end %>
+</div>
