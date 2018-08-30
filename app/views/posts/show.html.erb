@@ -1,0 +1,12 @@
+<div class="jumbotron post-detail">
+  <h2 class="display-6 text-center"><%= @post.title %></h2>
+  <p><%= @post.content %></p>
+  <hr class="my-4">
+  <%= link_to edit_post_path, class: "btn btn-primary" do %>
+    <i class="fas fa-edit"></i> Edit Post
+  <% end %>
+
+  <%= link_to post_path, method: :delete, class: "btn btn-danger delete-post-btn" do %>
+    <i class="fas fa-trash-alt"></i> Delete Post
+  <% end %>
+</div>
