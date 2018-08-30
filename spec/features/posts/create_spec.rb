@@ -21,7 +21,7 @@ feature 'add new post' do
       scenario 'user is able to add new post' do
         visit('/posts/new')
 
-        within('#post-form') do
+        within('#post-create-form') do
           fill_in('Title', with: 'Some title')
           fill_in('Content', with: 'Some content')
           click_on('Create')
@@ -36,7 +36,7 @@ feature 'add new post' do
       scenario 'user sees error messages' do
         visit('/posts/new')
 
-        within('#post-form') do
+        within('#post-create-form') do
           click_on('Create')
         end
 

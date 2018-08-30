@@ -25,7 +25,7 @@ feature 'post form' do
       visit('/posts/new')
       expect(page).to have_content('New Post')
 
-      within('#post-form') do
+      within('#post-create-form') do
         fill_in('Title', with: title)
         fill_in('Content', with: content)
       end
