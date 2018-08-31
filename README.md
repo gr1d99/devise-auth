@@ -4,6 +4,8 @@
 
 This is a very simple blog application implemented using ruby on rails
 
+[https://gr1d99-rails-blog.herokuapp.com/](https://gr1d99-rails-blog.herokuapp.com/)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -52,7 +54,6 @@ What things you need to install the software and how to install them
 ## Authors
 
 * **Gideon Kimutai**
-
 
 ## License
 
