@@ -1,19 +1,25 @@
 <div class="col-md-8 offset-md-2">
-  <h1 class="text-center">Posts</h1>
+  <% if @posts.empty? %>
+    <div class="jumbotron empty-posts">
+      <h4 class="display-6 text-center">
+        Oops! There are no posts at the moment ;)
+      </h4>
+    </div>
+  <% else %>
+    <div class="list-group">
+      <% @posts.each do |post| %>
+        <%= link_to post_path(post),
+                    class: "list-group-item list-group-item-action flex-column align-items-start" do %>
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">
+              <%= post.title %>
+            </h5>
+            <small id="post-time"><%= post.created_at.to_formatted_s(:db) %></small>
+          </div>
 
-  <div class="list-group">
-    <% @posts.each do |post| %>
-      <%= link_to post_path(post),
-                   class: "list-group-item list-group-item-action flex-column align-items-start" do %>
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">
-            <%= post.title %>
-          </h5>
-          <small id="post-time"><%= post.created_at.to_formatted_s(:db) %></small>
-        </div>
-
-        <p class="mb-1" id="post-content-sub"><%= post.content %></p>
+          <p class="mb-1" id="post-content-sub"><%= post.content %></p>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
