@@ -1,4 +1,4 @@
-<div class="col-md-8 offset-md-2">
+<div class="col-md-10 offset-md-1 posts-list">
   <% if @posts.empty? %>
     <div class="jumbotron empty-posts">
       <h4 class="display-6 text-center">
@@ -22,4 +22,24 @@
       <% end %>
     </div>
   <% end %>
+
+  <nav aria-label="Posts navigation paginator" class="posts-paginator">
+    <ul class="pagination justify-content-center">
+      <%= link_to_previous_page @posts, 'Previous Page', { class: 'page-link' } do %>
+        <li class="page-item disabled">
+          <a class="page-link">
+            Previous Page
+          </a>
+        </li>
+      <% end %>
+      <li class="page-item disabled">
+        <a href="#" class="page-link"><%= page_entries_info @posts %></a>
+      </li>
+      <%= link_to_next_page @posts, 'Next Page', { class: 'page-link'} do %>
+        <li class="page-item disabled">
+          <a class="page-link" tabindex="-1">Next Page</a>
+        </li>`
+      <% end %>
+    </ul>
+  </nav>
 </div>

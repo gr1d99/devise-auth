@@ -11,10 +11,39 @@
  * It is generally better to create a new file per style scope.
  *
  */
+@import "base";
 @import "devise";
 @import "posts";
 @import "bootstrap";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: px-rem(60);
+}
+
 .body-top{
   margin-top: 1em;
+}
+
+.posts-list{
+  margin-top: 3rem;
+}
+
+.posts-paginator{
+  margin-top: px-rem(20);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: px-rem(60);
+  line-height: px-rem(60); /* Vertically center the text there */
+  background-color: #f5f5f5;
 }
