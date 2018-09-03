@@ -1,3 +1,5 @@
+require 'faker'
+
 user = User.create!(email: 'test_user@email.com', password: 'testpassword')
 
 100.times do |n|
