@@ -4,7 +4,7 @@ RSpec.shared_examples 'index examples' do |assigned_resource, klass|
   it { is_expected.to respond_with(200) }
   it { is_expected.to render_template(:index) }
   it "assigns #{assigned_resource}" do
-    expect(assigns(assigned_resource)).to eq(klass.all)
+    expect(assigns(assigned_resource)).to match_array(klass.all)
   end
 end
 
