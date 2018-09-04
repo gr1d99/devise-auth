@@ -5,4 +5,3 @@ class Posts.App
   start: =>
     self = @
     self.postsUi.renderTimeSince()
-    self.postsUi.truncatePostContent()
