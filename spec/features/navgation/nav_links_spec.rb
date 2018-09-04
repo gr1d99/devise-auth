@@ -28,7 +28,6 @@ feature 'navbar' do
 
     scenario 'does not see protected links' do
       expect(page).not_to have_link('Logout', href: destroy_user_session_path)
-      expect(page).not_to have_link('Create Post', href: new_post_path)
     end
   end
 

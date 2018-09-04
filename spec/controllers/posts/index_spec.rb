@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require_relative '../../support/shared_examples'
 
@@ -10,6 +12,10 @@ RSpec.describe PostsController, type: :controller do
 
   describe 'index#GET' do
     before { get :index }
-    include_examples 'index examples', :posts, Post
+
+    it 'assigns posts' do
+      expect(assigns(:posts)).to match_array(Post.send(:all))
+    end
+    it_behaves_like 'index examples'
   end
 end

@@ -59,7 +59,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: ENV['APP_HOST'], port: ENV['APP_PORT'] }
-  config.action_mailer.delivery_method = ENV['MAILER_DELIVERY_METHOD'].to_sym
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address:              ENV['MAILER_ADDRESS'],
       port:                 ENV['MAILER_PORT'],
