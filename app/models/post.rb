@@ -8,4 +8,13 @@ class Post < ApplicationRecord
   }
   validates :content, presence: true
   validates :user, presence: true
+
+  def self.latest_posts(number)
+    order(
+      created_at: :asc
+    ).from(
+      all.reverse_order.limit(number),
+      'posts'
+    )
+  end
 end

@@ -1,1 +1,35 @@
-<h1>Home Page</h1>
+<div class="home-page">
+
+  <% if @latest_posts.empty? %>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="jumbotron empty-latest-posts">
+          <h1 class="display-5">Oops! it seems we have no content yet!!</h1>
+          <p class="lead">However you can be the first, click on the link below to publish your content.</p>
+          <hr class="my-4">
+          <p class="lead">
+            <%= link_to 'Create Post', new_post_path, class: "btn btn-primary btn-lg", role: "button" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <h2 class="text-muted">Latest posts</h2>
+    </div>
+
+    <div class="row">
+      <% @latest_posts.each do |latest_post| %>
+        <div class="col-sm-6 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= latest_post.title %>></h5>
+              <p class="card-text"><%= latest_post.content %></p>
+              <a class="post-detail-link btn btn-primary btn-sm" href="<%= post_path(latest_post) %>">Read More</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+</div>
