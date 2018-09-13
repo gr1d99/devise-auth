@@ -19,6 +19,17 @@
       </li>
     </ul>
 
+    <%= form_tag(
+          search_path,
+          method: :get,
+          id: 'search-form',
+          class: 'form-inline my-2 my-lg-0',
+          name: 'search-form') do
+    %>
+      <%= text_field_tag(:query, params[:query], placeholder: 'Search', class: 'form-control mr-sm-2') %>
+      <%= submit_tag("Search", name: nil, class: 'btn btn-outline-primary my-2 my-sm-0') %>
+    <% end %>
+
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
         <li class="nav-item">

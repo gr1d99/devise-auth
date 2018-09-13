@@ -17,4 +17,8 @@ class Post < ApplicationRecord
       'posts'
     )
   end
+
+  def self.search(keyword)
+    where('title ILIKE ?', "%#{keyword}%")
+  end
 end
