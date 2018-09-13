@@ -5,6 +5,15 @@ class PostsController < ApplicationController
     @posts = Post.page(params[:page])
   end
 
+  def search
+    @results =
+      if search_params.blank?
+        []
+      else
+        Post.search(search_params)
+      end
+  end
+
   def show
     @post = post
   end
@@ -51,5 +60,9 @@ class PostsController < ApplicationController
 
   def current_user_post
     current_user.posts.find(params[:id])
+  end
+
+  def search_params
+    params[:query]
   end
 end
