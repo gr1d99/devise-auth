@@ -1,50 +1,52 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "BLOG", root_path, class: :'navbar-brand' %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container">
+    <%= link_to "BLOG", root_path, class: :'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to(root_path, class: "nav-link") do %><i class="fas fa-home"></i> Home<span class="sr-only">(current)</span><% end %>
-      </li>
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to new_post_path, class: "nav-link" do %> <i class="fas fa-plus-circle"></i> Create Post<% end %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <%= link_to(root_path, class: "nav-link") do %><i class="fas fa-home"></i> Home<span class="sr-only">(current)</span><% end %>
         </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to new_post_path, class: "nav-link" do %> <i class="fas fa-plus-circle"></i> Create Post<% end %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to posts_path, class: "nav-link", id: "posts-link" do %><i class="fas fa-box"></i> Posts<% end %>
+        </li>
+      </ul>
+
+      <%= form_tag(
+            search_path,
+            method: :get,
+            id: 'search-form',
+            class: 'form-inline my-2 my-lg-0',
+            name: 'search-form') do
+      %>
+        <%= text_field_tag(:query, params[:query], placeholder: 'Search', class: 'form-control mr-sm-2') %>
+        <%= submit_tag("Search", name: nil, class: 'btn btn-outline-primary my-2 my-sm-0') %>
       <% end %>
-      <li class="nav-item">
-        <%= link_to posts_path, class: "nav-link", id: "posts-link" do %><i class="fas fa-box"></i> Posts<% end %>
-      </li>
-    </ul>
 
-    <%= form_tag(
-          search_path,
-          method: :get,
-          id: 'search-form',
-          class: 'form-inline my-2 my-lg-0',
-          name: 'search-form') do
-    %>
-      <%= text_field_tag(:query, params[:query], placeholder: 'Search', class: 'form-control mr-sm-2') %>
-      <%= submit_tag("Search", name: nil, class: 'btn btn-outline-primary my-2 my-sm-0') %>
-    <% end %>
-
-    <ul class="navbar-nav ml-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-            <i class="fas fa-sign-out-alt"></i> Logout
-          <% end %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to new_user_session_path, class: "nav-link" do %> <i class="fas fa-sign-in-alt"></i> Login<% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to new_user_registration_path, class: "nav-link" do %><i class="fas fa-user-plus"></i> Signup<% end %>
-        </li>
-      <% end %>
-    </ul>
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fas fa-sign-out-alt"></i> Logout
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to new_user_session_path, class: "nav-link" do %> <i class="fas fa-sign-in-alt"></i> Login<% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_registration_path, class: "nav-link" do %><i class="fas fa-user-plus"></i> Signup<% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
