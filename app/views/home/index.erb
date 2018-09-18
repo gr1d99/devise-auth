@@ -32,4 +32,22 @@
       <% end %>
     </div>
     <% end %>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card subscription-section">
+        <div class="col-lg-4 offset-md-4">
+          <p class="subscribe-text lead">Subscribe to receive posts updates</p>
+          <%= form_tag(subscribe_path, method: :post, class: :'form-inline mt-2', id: 'subscribe-form') do %>
+            <div class="input-group mb-3">
+              <%= text_field_tag(:email, nil, type: 'email', class: :'form-control', placeholder: 'you@example.com') %>
+              <div class="input-group-append">
+                <%= submit_tag(:'Subscribe', class: 'btn btn-outline-primary mb-2') %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
