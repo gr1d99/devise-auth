@@ -29,5 +29,6 @@ module Blog
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.autoload_paths << "#{Rails.root}/app/controllers/helpers"
   end
 end
