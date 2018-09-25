@@ -9,4 +9,5 @@ end
 RSpec.configure do |config|
   config.include MailerHelpers, type: :controller
   config.include MailerHelpers, type: :service
+  config.include MailerHelpers, type: :job
 end
