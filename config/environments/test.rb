@@ -45,5 +45,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.default_url_options = { host: ENV['APP_HOST'], port: ENV['APP_PORT'] }
-  config.action_mailer.delivery_method = :test
+  config.active_job.queue_adapter = :sidekiq
 end
