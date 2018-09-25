@@ -8,4 +8,13 @@ RSpec.describe Comment, type: :model do
     it { should have_db_column(:commentable_type).of_type(:string) }
     it { should belong_to(:commentable) }
   end
+
+  describe 'validations' do
+    it { should validate_presence_of(:comment) }
+    it { should validate_presence_of(:user_id) }
+  end
+
+  describe 'associations' do
+    it { should belong_to(:user) }
+  end
 end

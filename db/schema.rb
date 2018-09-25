@@ -17,11 +17,15 @@ ActiveRecord::Schema.define(version: 2018_09_25_124612) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
+    t.bigint "comments_id"
+    t.bigint "user_id"
     t.string "commentable_type"
     t.bigint "commentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["comments_id"], name: "index_comments_on_comments_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "comments_models", force: :cascade do |t|
@@ -66,5 +70,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_124612) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "comments", column: "comments_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
 end
