@@ -1,0 +1,17 @@
+<div class="col-md-6 offset-md-3">
+  <h3 class="text-center">Add your comment</h3>
+
+  <%= form_with(
+        model: @comment,
+        scope: :comment,
+        url: post_comments_path(@post),
+        local: true,
+        html: { name: 'post-comment-form', id: 'post-comment-form', class: "border p-3 rounded" }) do |form| %>
+    <div class="form-group">
+      <%= form.label(:comment) %>
+      <%= form.text_area(:comment, class: 'form-control') %>
+    </div>
+
+    <%= submit_tag('Submit Comment', class: "btn btn-primary") %>
+  <% end %>
+</div>

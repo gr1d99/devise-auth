@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
@@ -20,7 +22,7 @@ RSpec.describe PostsController, type: :controller do
       end
 
       it { is_expected.to respond_with(404) }
-      it { is_expected.to render_template(:'not_found') }
+      it { is_expected.to render_template(:not_found) }
     end
 
     describe 'and is owner of post' do

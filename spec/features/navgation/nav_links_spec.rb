@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require_relative '../../support/login_form'
 
 feature 'navbar' do
   context 'any user' do
-    before { visit("/") }
+    before { visit('/') }
     scenario 'sees home link' do
       expect(page).to have_link('Home', href: root_path)
     end
@@ -15,7 +17,7 @@ feature 'navbar' do
 
   context 'guest user' do
     before do
-      visit("/")
+      visit('/')
     end
 
     scenario 'sees login link' do
@@ -34,11 +36,11 @@ feature 'navbar' do
   context 'authenticated users' do
     let(:user) { create(:user) }
     let(:post) { create(:post, user: user) }
-    subject(:login_form)  { LoginForm.new }
+    subject(:login_form) { LoginForm.new }
 
     before do
       login_form.visit_page.login_as(user)
-      visit("/")
+      visit('/')
     end
 
     scenario 'sees logout link' do
