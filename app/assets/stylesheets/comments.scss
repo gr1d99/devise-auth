@@ -1,0 +1,19 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+i.fas.fa-trash{
+  color: red;
+}
+
+form#post-comment-form{
+  margin-top: 2rem;
+}
+
+div.action-links{
+  float: right;
+}
+
+a:hover{
+  text-decoration: none;
+}

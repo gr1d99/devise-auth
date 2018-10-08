@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require_relative '../../app/lib/utils'
 
@@ -11,6 +13,6 @@ RSpec.describe AppUtils do
 
   it 'raises an exception if argument does not have method name' do
     expect { described_class.pluralize_klass(1) }.to raise_error(NoMethodError)
-    expect { described_class.pluralize_klass("some class") }.to raise_error(NoMethodError)
+    expect { described_class.pluralize_klass('some class') }.to raise_error(NoMethodError)
   end
 end

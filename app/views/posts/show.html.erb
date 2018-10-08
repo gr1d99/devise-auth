@@ -3,12 +3,48 @@
   <p><%= @post.content %></p>
   <hr class="my-4">
   <% if owner?(@post) %>
-    <%= link_to edit_post_path, class: "btn btn-primary" do %>
-      <i class="fas fa-edit"></i> Edit Post
-    <% end %>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="post action group">
+        <%= link_to edit_post_path, class: "btn btn-secondary" do %>
+          <i class="fas fa-edit"></i> Edit Post
+        <% end %>
 
-    <%= link_to post_path, method: :delete, class: "btn btn-danger delete-post-btn" do %>
-      <i class="fas fa-trash-alt"></i> Delete Post
-    <% end %>
+        <%= link_to post_path, method: :delete, class: "btn btn-secondary" do %>
+          <i class="fas fa-trash-alt"></i> Delete Post
+        <% end %>
+      </div>
+    </div>
   <% end %>
+</div>
+
+<div class="container">
+  <h5 class="text-center"><%= @post.comments.count %> comments</h5>
+  <hr/>
+
+  <%= link_to(new_post_comment_path(@post), class: 'add-comment pull-right') do %>
+    Add your comment
+  <% end %>
+
+  <div class="col-sm-6 offset-3">
+    <ul class="list-unstyled">
+      <% @post.comments.each do |comment| %>
+        <li class="media">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1"><%= comment.id %></h5>
+            <%= comment.comment %>
+
+            <div class="clearfix">
+              <div class="action-links">
+                <%= edit_comment_link_for(comment) if owner?(comment) %>
+                <%= delete_comment_link_for(comment) if owner?(comment) %>
+              </div>
+            </div>
+
+            <hr/>
+            <div class="mb-5"></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

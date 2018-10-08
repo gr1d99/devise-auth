@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require_relative '../../support/login_form'
 
@@ -12,7 +14,7 @@ feature 'edit post' do
     end
 
     scenario 'it redirects to login page' do
-      expect(page).to have_content("You need to sign in or sign up before continuing.")
+      expect(page).to have_content('You need to sign in or sign up before continuing.')
     end
   end
 
@@ -34,7 +36,7 @@ feature 'edit post' do
       before do
         login_form.visit_page.login_as(user)
         visit(post_path(post))
-        click_on("Edit Post")
+        click_on('Edit Post')
       end
 
       scenario 'sees form with post data' do
@@ -48,11 +50,11 @@ feature 'edit post' do
       end
 
       scenario 'can make changes to the post' do
-        new_title = "Very EPIC title"
-        fill_in("Title", with: new_title)
-        click_on("Update Post")
+        new_title = 'Very EPIC title'
+        fill_in('Title', with: new_title)
+        click_on('Update Post')
 
-        expect(page).to have_content("Post updated successfully")
+        expect(page).to have_content('Post updated successfully')
         expect(page).to have_content(new_title)
         expect(page.current_path).to eq(post_path(post))
       end
